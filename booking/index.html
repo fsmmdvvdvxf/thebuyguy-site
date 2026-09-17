@@ -1,0 +1,445 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex, nofollow">
+<title>Book a setup call — ORDAFORMA</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,700&family=Space+Grotesk:wght@400;500;600&display=swap">
+<style>
+  :root{
+    --ink:#0D0F1A; --muted:#6F6953; --ivory:#FBF7EC; --paper:#FFFFFF;
+    --tan:#F1E9D6; --tan-line:#DECFAE;
+    --blue:#2B44D8; --blue-deep:#1E2FA8; --azure:#2E97E0; --sky:#BBDDF6;
+    --glass:rgba(255,255,255,.42);
+    --glass-strong:rgba(255,255,255,.62);
+    --glass-border:rgba(255,255,255,.55);
+    --glass-edge: inset 0 1px 0 rgba(255,255,255,.6), inset 0 -1px 0 rgba(255,255,255,.12);
+    --shadow-glass: 0 16px 40px -20px rgba(20,24,46,.20), 0 3px 10px -4px rgba(20,24,46,.08);
+    --shadow-glass-sm: 0 6px 16px -9px rgba(20,24,46,.16);
+    --ok:#2F7D4F; --warn:#A8443A;
+    --font-body:'Space Grotesk', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+    --font-display:'Bricolage Grotesque', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  }
+  *{box-sizing:border-box; margin:0; padding:0;}
+  html{-webkit-text-size-adjust:100%;}
+  body{
+    font-family:var(--font-body); color:var(--ink); line-height:1.6;
+    background:
+      radial-gradient(900px 500px at 20% 0%, rgba(46,151,224,.18), transparent 60%),
+      radial-gradient(700px 600px at 100% 100%, rgba(43,68,216,.14), transparent 55%),
+      #ECE4D2;
+    background-attachment:fixed;
+    min-height:100vh;
+    padding-inline:18px; padding-block:0;
+  }
+  .wrap{max-width:900px; margin:0 auto; padding-block:44px 72px;}
+
+  /* ---------- glass ---------- */
+  .glass{
+    background:var(--glass);
+    backdrop-filter:blur(28px) saturate(180%);
+    -webkit-backdrop-filter:blur(28px) saturate(180%);
+    border:1px solid var(--glass-border);
+    border-radius:24px;
+    box-shadow:var(--shadow-glass), var(--glass-edge);
+  }
+  @supports not ((backdrop-filter: blur(1px)) or (-webkit-backdrop-filter: blur(1px))){
+    .glass{background:rgba(255,255,255,.88);}
+  }
+
+  /* ---------- header ---------- */
+  header{display:flex; flex-direction:column; gap:14px; margin-bottom:26px;}
+  .mark{
+    width:44px; height:44px; border-radius:50%; border:5px solid transparent;
+    background:linear-gradient(#ECE4D2,#ECE4D2) padding-box,
+      linear-gradient(135deg,#2B44D8,#2E97E0 55%,#BBDDF6) border-box;
+  }
+  .eyebrow{
+    font-size:11px; letter-spacing:.16em; text-transform:uppercase;
+    color:var(--muted); font-weight:600;
+  }
+  h1{
+    font-family:var(--font-display); font-weight:700;
+    font-size:clamp(1.95rem,5.4vw,2.7rem); line-height:1.06;
+    letter-spacing:-.025em; text-wrap:balance;
+  }
+  .lede{color:#3A3E4E; max-width:60ch; font-size:16px;}
+
+  .facts{display:flex; flex-wrap:wrap; gap:8px; align-items:center; margin-top:4px;}
+  .pill{
+    display:inline-flex; align-items:baseline; gap:7px;
+    background:var(--glass-strong);
+    backdrop-filter:blur(14px) saturate(160%); -webkit-backdrop-filter:blur(14px) saturate(160%);
+    border:1px solid var(--glass-border); border-radius:980px;
+    padding:6px 14px; font-size:13px; box-shadow:var(--shadow-glass-sm);
+  }
+  .pill span{font-size:10px; letter-spacing:.12em; text-transform:uppercase; color:var(--muted); font-weight:600;}
+  .pill b{font-weight:600; font-variant-numeric:tabular-nums;}
+
+  /* ---------- tz bar ---------- */
+  .tzbar{
+    display:flex; flex-wrap:wrap; align-items:center; justify-content:space-between;
+    gap:12px; margin:22px 0 14px;
+  }
+  .tzbar label{font-size:11px; letter-spacing:.12em; text-transform:uppercase; color:var(--muted); font-weight:600;}
+  select{
+    font:inherit; font-size:14px; color:var(--ink);
+    background:var(--glass-strong); border:1px solid var(--glass-border);
+    border-radius:980px; padding:7px 13px; cursor:pointer;
+    backdrop-filter:blur(14px); -webkit-backdrop-filter:blur(14px);
+  }
+  #status{font-size:13px; color:var(--muted);}
+
+  /* ---------- days ---------- */
+  #days{display:grid; grid-template-columns:repeat(auto-fill,minmax(212px,1fr)); gap:14px;}
+  .day{padding:16px; display:flex; flex-direction:column; gap:12px;}
+  .day-head{display:flex; align-items:baseline; justify-content:space-between; gap:8px;
+    padding-bottom:10px; border-bottom:1px solid rgba(222,207,174,.7);}
+  .day-name{font-family:var(--font-display); font-weight:600; font-size:16px; letter-spacing:-.01em;}
+  .day-date{font-size:12px; color:var(--muted); font-variant-numeric:tabular-nums;}
+  .chips{display:flex; flex-wrap:wrap; gap:7px;}
+  .chip{
+    font:inherit; font-size:13.5px; font-weight:500; font-variant-numeric:tabular-nums;
+    color:var(--blue-deep); background:rgba(255,255,255,.66);
+    border:1px solid rgba(43,68,216,.20); border-radius:980px;
+    padding:7px 12px; cursor:pointer;
+    transition:transform .12s ease, box-shadow .12s ease, background .12s ease;
+  }
+  .chip:hover{background:#fff; box-shadow:var(--shadow-glass-sm); transform:translateY(-1px);}
+  .chip[aria-pressed="true"]{
+    background:linear-gradient(180deg, color-mix(in srgb, var(--blue) 92%, #fff), var(--blue) 60%, var(--blue-deep));
+    color:#fff; border-color:transparent; box-shadow:0 6px 16px -8px rgba(43,68,216,.7);
+  }
+  .chip:focus-visible, .btn:focus-visible, select:focus-visible, input:focus-visible, textarea:focus-visible{
+    outline:2px solid var(--blue); outline-offset:2px;
+  }
+
+  /* ---------- booking form ---------- */
+  #panel{margin-top:22px; padding:24px;}
+  .panel-head{display:flex; align-items:baseline; justify-content:space-between; gap:12px; flex-wrap:wrap;}
+  h2{font-family:var(--font-display); font-weight:600; font-size:19px; letter-spacing:-.01em;}
+  .chosen{font-size:14px; font-weight:600; color:var(--blue-deep); font-variant-numeric:tabular-nums;}
+  .hint{color:var(--muted); font-size:14.5px; max-width:58ch;}
+  .grid{display:grid; grid-template-columns:repeat(auto-fit,minmax(210px,1fr)); gap:13px; margin-top:16px;}
+  .field{display:flex; flex-direction:column; gap:6px;}
+  .field > span{font-size:11px; letter-spacing:.12em; text-transform:uppercase; color:var(--muted); font-weight:600;}
+  input, textarea{
+    font:inherit; font-size:15px; color:var(--ink);
+    background:rgba(255,255,255,.72); border:1px solid rgba(222,207,174,.9);
+    border-radius:14px; padding:11px 13px; width:100%; resize:vertical;
+  }
+  input[aria-invalid="true"], textarea[aria-invalid="true"]{border-color:var(--warn); background:rgba(168,68,58,.06);}
+  .wide{grid-column:1/-1;}
+  .hp{position:absolute; left:-9999px; width:1px; height:1px; overflow:hidden;}
+
+  .actions{display:flex; flex-wrap:wrap; gap:10px; align-items:center; margin-top:18px;}
+  .btn{
+    font:inherit; font-size:15px; font-weight:600; cursor:pointer;
+    border-radius:980px; padding:12px 22px; border:1px solid transparent;
+  }
+  .btn-primary{
+    background:linear-gradient(180deg, color-mix(in srgb, var(--blue) 92%, #fff), var(--blue) 60%, var(--blue-deep));
+    color:#fff; box-shadow:0 10px 24px -12px rgba(43,68,216,.75);
+  }
+  .btn-primary[disabled]{opacity:.6; cursor:progress;}
+  .btn-ghost{background:rgba(255,255,255,.6); border-color:var(--glass-border); color:var(--ink);}
+  .msg{font-size:14px; font-weight:600;}
+  .msg.err{color:var(--warn);} .msg.ok{color:var(--ok);}
+
+  .note{margin-top:14px; padding-top:14px; border-top:1px solid rgba(222,207,174,.7);
+    font-size:13.5px; color:var(--muted);}
+  .note a{color:var(--blue);}
+
+  footer{margin-top:34px; font-size:13px; color:var(--muted); display:flex; flex-direction:column; gap:5px;}
+  footer a{color:var(--blue);}
+  @media (prefers-reduced-motion: reduce){ *{transition:none !important;} }
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <header>
+    <div class="mark" aria-hidden="true"></div>
+    <p class="eyebrow">ORDAFORMA · Software setup</p>
+    <h1>Book a setup call</h1>
+    <p class="lede">Thirty minutes on Zoom, screen shared, and your software is installed and
+      configured by the end of it. Pick a time that suits you — these are my genuinely open slots.</p>
+    <div class="facts">
+      <div class="pill"><span>Length</span><b>30 min</b></div>
+      <div class="pill"><span>Where</span><b>Zoom</b></div>
+      <div class="pill"><span>Cost</span><b>Free</b></div>
+    </div>
+  </header>
+
+  <div class="tzbar">
+    <div style="display:flex;align-items:center;gap:10px;flex-wrap:wrap;">
+      <label for="tz">Times shown in</label>
+      <select id="tz"></select>
+    </div>
+    <p id="status">Loading available times…</p>
+  </div>
+
+  <div id="days"></div>
+
+  <section class="glass" id="panel" hidden>
+    <div class="panel-head">
+      <h2>Your details</h2>
+      <p class="chosen" id="chosen"></p>
+    </div>
+    <p class="hint">I'll confirm by email with the Zoom link — usually within the hour.</p>
+
+    <form id="form" novalidate>
+      <div class="grid">
+        <label class="field"><span>Your name</span>
+          <input id="f-name" type="text" autocomplete="name" placeholder="Jordan Reyes" required></label>
+        <label class="field"><span>Email</span>
+          <input id="f-email" type="email" autocomplete="email" placeholder="jordan@example.com" required></label>
+        <label class="field wide"><span>What are we setting up?</span>
+          <input id="f-software" type="text" placeholder="ORDAFORMA on a new laptop" required></label>
+        <label class="field wide"><span>Anything I should know first (optional)</span>
+          <textarea id="f-notes" rows="2" placeholder="Windows 11, no admin rights yet"></textarea></label>
+      </div>
+      <input class="hp" type="checkbox" id="botcheck" name="botcheck" tabindex="-1" autocomplete="off" aria-hidden="true">
+      <div class="actions">
+        <button type="submit" class="btn btn-primary" id="submit">Request this time</button>
+        <button type="button" class="btn btn-ghost" id="cancel">Pick another</button>
+        <span class="msg" id="msg" role="status"></span>
+      </div>
+    </form>
+
+    <p class="note">Times fill up as people book. If yours is taken I'll email you straight away
+      with the nearest alternatives.</p>
+  </section>
+
+  <footer>
+    <p id="fallback-note">Prefer email? Write to
+      <a id="mail" href="mailto:ordaformaofficial@gmail.com">ordaformaofficial@gmail.com</a>
+      with a couple of times that work.</p>
+    <p>ORDAFORMA · Effingham, Illinois</p>
+  </footer>
+
+</div>
+
+<script src="./config.js"></script>
+<script>
+(function(){
+  "use strict";
+  var CFG = window.ORDA_BOOKING_CONFIG || {};
+  var OWNER = CFG.OWNER_EMAIL || "ordaformaofficial@gmail.com";
+  var HOME_TZ = CFG.TIMEZONE || "America/Chicago";
+
+  var $ = function(id){ return document.getElementById(id); };
+  var slots = [];
+  var chosen = null;
+  var tz = HOME_TZ;
+  // Generated once per page load, so a double-submit collapses into one booking.
+  var bookingId = "b_" + (window.crypto && crypto.randomUUID
+      ? crypto.randomUUID().replace(/-/g, "").slice(0, 12)
+      : Math.random().toString(36).slice(2, 14));
+
+  $("mail").href = "mailto:" + OWNER;
+  $("mail").textContent = OWNER;
+
+  /* ---------- time zone ---------- */
+  function localTz(){
+    try { return Intl.DateTimeFormat().resolvedOptions().timeZone || HOME_TZ; }
+    catch(e){ return HOME_TZ; }
+  }
+  function tzLabel(zone, d){
+    try {
+      var parts = new Intl.DateTimeFormat("en-US", { timeZone: zone, timeZoneName: "short" })
+        .formatToParts(d || new Date());
+      for (var i=0;i<parts.length;i++) if (parts[i].type === "timeZoneName") return parts[i].value;
+    } catch(e){}
+    return zone;
+  }
+  function buildTzOptions(){
+    var sel = $("tz");
+    var mine = localTz();
+    var opts = [];
+    if (mine && mine !== HOME_TZ) opts.push({ v: mine, t: "Your time (" + tzLabel(mine) + ")" });
+    opts.push({ v: HOME_TZ, t: "Central (" + tzLabel(HOME_TZ) + ")" });
+    opts.forEach(function(o){
+      var el = document.createElement("option");
+      el.value = o.v; el.textContent = o.t;
+      sel.appendChild(el);
+    });
+    tz = opts[0].v;
+    sel.value = tz;
+    sel.addEventListener("change", function(){ tz = sel.value; render(); if (chosen) showChosen(); });
+  }
+  function fmtTime(d){
+    return new Intl.DateTimeFormat("en-US",
+      { timeZone: tz, hour: "numeric", minute: "2-digit" }).format(d).toLowerCase();
+  }
+  function fmtDayKey(d){
+    return new Intl.DateTimeFormat("en-US",
+      { timeZone: tz, weekday: "long", month: "short", day: "numeric" }).format(d);
+  }
+  function fmtFull(d){
+    return new Intl.DateTimeFormat("en-US", { timeZone: tz, weekday: "long", month: "short",
+      day: "numeric", hour: "numeric", minute: "2-digit" }).format(d) + " " + tzLabel(tz, d);
+  }
+
+  /* ---------- render ---------- */
+  function render(){
+    var host = $("days");
+    host.textContent = "";
+    if (!slots.length){
+      $("status").textContent = "No open times in the next two weeks.";
+      var empty = document.createElement("div");
+      empty.className = "glass day";
+      empty.innerHTML = '<p class="hint">Nothing free right now — email me and we\'ll find a time.</p>';
+      host.appendChild(empty);
+      return;
+    }
+    $("status").textContent = slots.length + " open times over the next two weeks";
+
+    var groups = [];
+    var index = {};
+    slots.forEach(function(s){
+      var key = fmtDayKey(s.date);
+      if (!(key in index)){ index[key] = groups.length; groups.push({ key: key, items: [] }); }
+      groups[index[key]].items.push(s);
+    });
+
+    groups.forEach(function(g){
+      var card = document.createElement("div");
+      card.className = "glass day";
+      var parts = g.key.split(", ");
+      card.innerHTML =
+        '<div class="day-head"><span class="day-name"></span><span class="day-date"></span></div>' +
+        '<div class="chips"></div>';
+      card.querySelector(".day-name").textContent = parts[0];
+      card.querySelector(".day-date").textContent = parts.slice(1).join(", ");
+      var chips = card.querySelector(".chips");
+      g.items.forEach(function(s){
+        var b = document.createElement("button");
+        b.type = "button"; b.className = "chip";
+        b.setAttribute("aria-pressed", chosen && chosen.id === s.id ? "true" : "false");
+        b.textContent = fmtTime(s.date);
+        b.addEventListener("click", function(){ pick(s); });
+        chips.appendChild(b);
+      });
+      host.appendChild(card);
+    });
+  }
+
+  function showChosen(){ $("chosen").textContent = fmtFull(chosen.date); }
+
+  function pick(s){
+    chosen = s;
+    render();
+    $("panel").hidden = false;
+    showChosen();
+    $("msg").textContent = "";
+    $("panel").scrollIntoView({ behavior: "smooth", block: "nearest" });
+    $("f-name").focus();
+  }
+
+  $("cancel").addEventListener("click", function(){
+    chosen = null; $("panel").hidden = true; render();
+  });
+
+  /* ---------- submit ---------- */
+  function invalid(el, bad){ el.setAttribute("aria-invalid", bad ? "true" : "false"); return bad; }
+
+  $("form").addEventListener("submit", function(e){
+    e.preventDefault();
+    if (!chosen) return;
+    if ($("botcheck").checked) return;            // honeypot
+
+    var nameEl = $("f-name"), mailEl = $("f-email"), softEl = $("f-software");
+    var name = nameEl.value.trim(), email = mailEl.value.trim(), soft = softEl.value.trim();
+    var bad = false;
+    bad = invalid(nameEl, name.length < 2) || bad;
+    bad = invalid(mailEl, !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) || bad;
+    bad = invalid(softEl, soft.length < 2) || bad;
+    if (bad){ return say("Add your name, a valid email, and what we're setting up.", "err"); }
+
+    var btn = $("submit");
+    btn.disabled = true; btn.textContent = "Sending…";
+    say("", "");
+
+    // Pipe-delimited sentinel line: free text is deliberately excluded so it
+    // can never inject a delimiter or newline into the parser.
+    var payload = ["ORDA-BOOKING-V1", bookingId, chosen.id, name, email].join("|");
+    var body = {
+      subject: "ORDA-BOOKING " + chosen.id + " " + name,
+      from_name: "ORDAFORMA Booking Page",
+      booking_id: bookingId,
+      slot_start_utc: chosen.id,
+      slot_local_ct: new Intl.DateTimeFormat("en-US", { timeZone: HOME_TZ, weekday: "long",
+        month: "short", day: "numeric", hour: "numeric", minute: "2-digit" }).format(chosen.date) + " CT",
+      client_name: name,
+      client_email: email,
+      client_software: soft,
+      client_notes: $("f-notes").value.trim(),
+      client_timezone: tz,
+      orda_payload: payload,
+      botcheck: ""
+    };
+
+    var url = CFG.ENDPOINT;
+    if (CFG.PROVIDER === "web3forms"){
+      body.access_key = CFG.ACCESS_KEY;
+    } else if (CFG.PROVIDER === "formsubmit"){
+      url = "https://formsubmit.co/ajax/" + (CFG.FORMSUBMIT_EMAIL || OWNER);
+      body._subject = body.subject;
+      body._template = "table";
+      body._captcha = "false";
+    }
+
+    fetch(url, {
+      method: "POST",
+      headers: { "Content-Type": "application/json", "Accept": "application/json" },
+      body: JSON.stringify(body)
+    }).then(function(r){
+      return r.json().catch(function(){ return { success: r.ok }; });
+    }).then(function(j){
+      if (j && (j.success === true || j.success === "true")){
+        sessionStorage.setItem("orda_booked", fmtFull(chosen.date));
+        window.location.href = "./thanks.html";
+      } else {
+        throw new Error((j && (j.message || j.error)) || "rejected");
+      }
+    })["catch"](function(){
+      btn.disabled = false; btn.textContent = "Request this time";
+      say("That didn't go through. Email " + OWNER + " and I'll book it manually.", "err");
+    });
+  });
+
+  function say(text, kind){
+    var m = $("msg");
+    m.textContent = text;
+    m.className = "msg" + (kind ? " " + kind : "");
+  }
+
+  /* ---------- boot ---------- */
+  buildTzOptions();
+  fetch("./slots.json?v=" + Date.now(), { cache: "no-store" })
+    .then(function(r){ if (!r.ok) throw new Error("http " + r.status); return r.json(); })
+    .then(function(d){
+      var now = Date.now();
+      slots = (d.slots || []).map(function(s){
+        return { id: s.start_utc, date: new Date(s.start_utc) };
+      }).filter(function(s){ return s.date.getTime() > now; });
+      render();
+    })
+    ["catch"](function(){
+      $("status").textContent = "Couldn't load available times.";
+      var host = $("days");
+      host.textContent = "";
+      var card = document.createElement("div");
+      card.className = "glass day";
+      card.innerHTML = '<p class="hint">The schedule didn\'t load. Email <a href="mailto:' +
+        OWNER + '">' + OWNER + '</a> with a couple of times that suit you and I\'ll confirm one.</p>';
+      host.appendChild(card);
+    });
+})();
+</script>
+</body>
+</html>
